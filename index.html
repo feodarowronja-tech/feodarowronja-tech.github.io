@@ -5,353 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ronja Feodarow – Psychotherapeutin in Fürth</title>
   <style>
-    /* ── Reset & Tokens ───────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     @font-face {
-      font-family: 'Tiraroum';
-      src: url('fonts/Tiraroum.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
+      font-family: "Tiraroum";
+      src: url("fonts/Tiraroum.ttf") format("truetype");
+      font-weight: normal; font-style: normal;
+    }
+    @font-face {
+      font-family: "Metamorphous";
+      src: url("fonts/metamorphous.regular.ttf") format("truetype");
+      font-weight: normal; font-style: normal;
     }
     :root {
       --cream:    #f5f0e8;
       --bark:     #5c3d1e;
       --bark-mid: #7a5230;
-      --sage:     #7d9e85;
       --sage-lt:  #b4cdba;
       --ink:      #1e1a14;
       --nav-h:    72px;
       --plank-w:  160px;
       --plank-h:  80px;
-      --radius:   4px;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
-    }
-    /* ── NAV ──────────────────────────────────────────────────── */
+    body { font-family: Arial, Helvetica, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
     #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      background: rgba(92, 61, 30, 0.96);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      z-index: 1000;
-      box-shadow: 0 2px 16px rgba(30,18,8,0.35);
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(92,61,30,0.96); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; z-index: 1000; box-shadow: 0 2px 16px rgba(30,18,8,0.35);
     }
-    /* Brand */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-    .brand img {
-      height: 58px;
-      width: auto;
-      object-fit: contain;
-    }
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-name {
-      font-family: 'Tiraroum', Georgia, serif;
-      font-size: 1.45rem;
-      font-weight: normal;
-      color: #fff;
-      letter-spacing: 0.03em;
-      line-height: 1.2;
-    }
-    .brand-title {
-      font-family: 'Tiraroum', Georgia, serif;
-      font-size: 0.95rem;
-      color: var(--sage-lt);
-      letter-spacing: 0.06em;
-    }
-    /* Desktop planks */
-    .nav-planks {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand img { height: 58px; width: auto; object-fit: contain; }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-name { font-family: "Tiraroum", Georgia, serif; font-size: 1.45rem; font-weight: normal; color: #fff; letter-spacing: 0.03em; line-height: 1.2; }
+    .brand-title { font-family: "Tiraroum", Georgia, serif; font-size: 0.95rem; color: var(--sage-lt); letter-spacing: 0.06em; }
+    .nav-planks { display: flex; gap: 10px; align-items: center; }
     .plank-btn {
-      position: relative;
-      width: var(--plank-w);
-      height: var(--plank-h);
-      cursor: pointer;
-      border: none;
-      background: none;
-      padding: 0;
-      transition: transform 0.15s ease, filter 0.15s ease;
-      flex-shrink: 0;
+      position: relative; width: var(--plank-w); height: var(--plank-h);
+      cursor: pointer; border: none; background: none; padding: 0;
+      transition: transform 0.15s ease, filter 0.15s ease; flex-shrink: 0;
     }
     .plank-btn:hover  { transform: translateY(-2px) scale(1.03); filter: brightness(1.1); }
     .plank-btn:active { transform: translateY(1px) scale(0.98); }
-    .plank-btn img.plank-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      /* Fallback if image missing */
-    }
+    .plank-btn img.plank-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
     .plank-label {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-family: 'Tiraroum', Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: normal;
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: "Tiraroum", Georgia, serif; font-size: 1.15rem; font-weight: normal;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.4);
-      letter-spacing: 0.05em;
-      z-index: 1;
-      pointer-events: none;
-      padding: 0 10px;
-      text-align: center;
+      letter-spacing: 0.05em; z-index: 1; pointer-events: none; padding: 0 10px; text-align: center;
     }
-    /* Mobile menu plank */
-    .menu-plank {
-      display: none;
-    }
-    /* Mobile dropdown */
+    .menu-plank { display: none; }
     .mobile-menu {
-      display: none;
-      position: absolute;
-      top: var(--nav-h);
-      right: 0;
-      background: rgba(80, 50, 18, 0.97);
-      padding: 12px;
-      flex-direction: column;
-      gap: 8px;
-      border-radius: 0 0 0 8px;
-      box-shadow: -4px 4px 20px rgba(0,0,0,0.4);
+      display: none; position: absolute; top: var(--nav-h); right: 0;
+      background: rgba(80,50,18,0.97); padding: 12px; flex-direction: column;
+      gap: 8px; border-radius: 0 0 0 8px; box-shadow: -4px 4px 20px rgba(0,0,0,0.4);
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu .plank-btn { width: 140px; height: 70px; }
-    /* ── HERO ─────────────────────────────────────────────────── */
     #hero {
-      margin-top: var(--nav-h);
-      position: relative;
-      width: 100%;
-      aspect-ratio: 2/1;
-      overflow: hidden;
-      background: linear-gradient(
-        to bottom,
-        #a8d4f0 0%,
-        #c8e8f8 35%,
-        #d4ebb8 62%,
-        #b8dc90 100%
-      );
+      margin-top: var(--nav-h); position: relative; width: 100%; aspect-ratio: 4/1;
+      overflow: hidden; background: linear-gradient(to bottom, #69b1dd 0%, #c8e8f8 35%, #d4ebb8 62%, #b8dc90 100%);
     }
-    #hero img {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 90%;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      z-index: 1;
-    }
-    /* Hero fallback gradient */
-    #hero .hero-fallback {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        #b8d4c0 0%, #e8dfc8 40%, #c8b88a 70%, #8aaa92 100%
-      );
-      /* decorative stork silhouette via CSS if no image */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #hero .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-    }
+    #hero img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 70%; width: auto; object-fit: contain; display: block; z-index: 1; }
+    @media (max-width: 720px) { #hero img { height: 80%; } }
+    #hero .hero-overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
     #hero .hero-title {
-      position: absolute;
-      top: 12%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(2rem, 6vw, 4.5rem);
-      font-weight: bold;
-      color: #fff;
-      text-align: center;
-      text-shadow: 1px 2px 6px rgba(0,0,0,0.45);
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-      white-space: nowrap;
-      z-index: 3;
+      position: absolute; top: 12%; left: 50%; transform: translateX(-50%);
+      font-family: "Metamorphous", Georgia, serif;
+      font-size: clamp(1rem, 3vw, 3rem); font-weight: normal; color: #fff; text-align: center;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.45); letter-spacing: 0.02em;
+      line-height: 1.2; white-space: nowrap; z-index: 3;
     }
-    /* ── SECTIONS ─────────────────────────────────────────────── */
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-    section {
-      padding-top: 80px;
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .section-plank {
-      position: relative;
-      width: 200px;
-      height: 56px;
-      flex-shrink: 0;
-    }
-    .section-plank .plank-fallback { border-radius: 4px; }
-    .section-plank .plank-label { font-size: 0.9rem; }
-    .section-line {
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(to right, var(--bark-mid), transparent);
-    }
-    .section-body {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: #2e2418;
-    }
-    .section-body p + p { margin-top: 1em; }
-    /* Über mich */
-    #uebermich .profile-wrap {
-      display: flex;
-      gap: 36px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    #uebermich .profile-img-box {
-      width: 200px;
-      height: 200px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(92,61,30,0.22);
-    }
-    #uebermich .profile-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .profile-placeholder { display: none; }
-    #uebermich .profile-text { flex: 1; min-width: 260px; }
-    /* Qualifikations-Chips */
-    .qual-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-    }
-    .qual-chip {
-      background: var(--bark);
-      color: #fff;
-      font-size: 0.78rem;
-      padding: 5px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.04em;
-    }
-    /* Erstgespräch cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 8px;
-    }
-    .card {
-      background: #fff;
-      border-left: 4px solid var(--bark);
-      border-radius: 0 8px 8px 0;
-      padding: 20px 22px;
-      box-shadow: 0 4px 16px rgba(92,61,30,0.10);
-    }
-    .card-icon { display: none; }
-    .section-plank .plank-label { font-size: 1.2rem; color: #111; text-shadow: none; }
-    .card h3 {
-      font-family: 'Tiraroum', Georgia, serif;
-      font-size: 1.15rem;
+    main { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+    section { padding-top: 80px; }
+    .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 36px; }
+    .section-heading {
+      font-family: "Tiraroum", Georgia, serif;
+      font-size: 2.2rem;
       font-weight: normal;
-      color: #111;
-      margin-bottom: 6px;
-      letter-spacing: 0.05em;
-    }
-    .card p { font-size: 0.9rem; line-height: 1.6; color: #3a2c1a; }
-    /* Kontakt */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 8px;
-    }
-    .contact-item {
-      background: #fff;
-      border-radius: 8px;
-      padding: 22px 24px;
-      box-shadow: 0 4px 16px rgba(92,61,30,0.10);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .contact-item .ci-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.10em;
-      color: var(--bark-mid);
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-    .contact-item .ci-value {
-      font-size: 1rem;
-      color: var(--ink);
-    }
-    .contact-item a {
       color: var(--bark);
-      text-decoration: none;
-    }
-    .contact-item a:hover { text-decoration: underline; }
-    /* Impressum */
-    #impressum .section-body {
-      font-size: 0.93rem;
-      color: #4a3828;
-    }
-    #impressum h3 {
-      font-family: 'Tiraroum', Georgia, serif;
-      font-size: 1.1rem;
-      font-weight: normal;
       letter-spacing: 0.06em;
-      color: #111;
-      margin: 18px 0 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    /* ── FOOTER ───────────────────────────────────────────────── */
-    footer {
-      background: var(--bark);
-      color: rgba(255,255,255,0.6);
-      text-align: center;
-      padding: 20px;
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-    }
-    /* ── MOBILE ───────────────────────────────────────────────── */
+    .section-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--bark-mid), transparent); }
+    .section-body { font-size: 1.05rem; line-height: 1.85; color: #2e2418; }
+    .section-body p + p { margin-top: 1em; }
+    #uebermich .profile-wrap { display: flex; gap: 36px; align-items: flex-start; flex-wrap: wrap; }
+    #uebermich .profile-img-box { width: 200px; height: 200px; flex-shrink: 0; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 20px rgba(92,61,30,0.22); }
+    #uebermich .profile-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    #uebermich .profile-text { flex: 1; min-width: 260px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 24px; }
+    .contact-item { background: #fff; border-radius: 8px; padding: 22px 24px; box-shadow: 0 4px 16px rgba(92,61,30,0.10); display: flex; flex-direction: column; gap: 8px; }
+    .contact-item .ci-label { font-size: 0.72rem; letter-spacing: 0.10em; color: var(--bark-mid); text-transform: uppercase; font-weight: bold; }
+    .contact-item .ci-value { font-size: 1rem; color: var(--ink); }
+    .contact-item a { color: var(--bark); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    #impressum .section-body { font-size: 0.93rem; color: #4a3828; }
+    #impressum h3 { font-family: "Tiraroum", Georgia, serif; font-size: 1.1rem; font-weight: normal; letter-spacing: 0.06em; color: #111; margin: 18px 0 4px; }
+    footer { background: var(--bark); color: rgba(255,255,255,0.6); text-align: center; padding: 20px; font-size: 0.8rem; letter-spacing: 0.04em; }
     @media (max-width: 720px) {
       :root { --nav-h: 62px; }
       .nav-planks { display: none; }
@@ -360,55 +112,45 @@
       #hero .hero-title { font-size: clamp(1.2rem, 8vw, 2.2rem); }
       #uebermich .profile-wrap { justify-content: center; }
       #uebermich .profile-img-box { width: 160px; height: 160px; }
-      .section-plank { width: 160px; height: 46px; }
+      .section-heading { font-size: 1.6rem; }
     }
     @media (max-width: 480px) {
       main { padding: 0 16px 60px; }
-      .brand-name { font-size: 0.92rem; }
-      .brand-title { display: none; }
+      .brand-name { font-size: 0.78rem; }
+      .brand-title { font-size: 0.68rem; }
     }
   </style>
 </head>
 <body>
-<!-- ══════════════ NAVBAR ══════════════ -->
 <nav id="navbar">
-  <!-- Brand -->
   <a class="brand" href="#hero" aria-label="Zur Startseite">
-    <img src="images/logo.png" alt="Logo Ronja Feodarow"
-         onerror="this.style.display='none'">
+    <img src="images/logo.png" alt="Logo Ronja Feodarow" onerror="this.style.display='none'">
     <div class="brand-text">
       <span class="brand-name">Ronja Feodarow, M.Sc.</span>
-      <span class="brand-title">Psychotherapeutin</span>
+      <span class="brand-title">Kinder- und Jugendpsychotherapeutin & Heilpraktikerin</span>
     </div>
   </a>
-  <!-- Desktop planks -->
   <div class="nav-planks" role="navigation" aria-label="Hauptnavigation">
     <button class="plank-btn" onclick="scrollToSection('uebermich')" aria-label="Über mich">
-      <img class="plank-img" src="images/plank.png" alt=""
-           onerror="this.style.display='none'">
+      <img class="plank-img" src="images/plank.png" alt="" onerror="this.style.display='none'">
       <span class="plank-label">Über mich</span>
     </button>
     <button class="plank-btn" onclick="scrollToSection('erstgespraech')" aria-label="Erstgespräch">
-      <img class="plank-img" src="images/plank.png" alt=""
-           onerror="this.style.display='none'">
+      <img class="plank-img" src="images/plank.png" alt="" onerror="this.style.display='none'">
       <span class="plank-label">Erstgespräch</span>
     </button>
     <button class="plank-btn" onclick="scrollToSection('kontakt')" aria-label="Kontakt">
-      <img class="plank-img" src="images/plank.png" alt=""
-           onerror="this.style.display='none'">
+      <img class="plank-img" src="images/plank.png" alt="" onerror="this.style.display='none'">
       <span class="plank-label">Kontakt</span>
     </button>
     <button class="plank-btn" onclick="scrollToSection('impressum')" aria-label="Impressum">
-      <img class="plank-img" src="images/plank.png" alt=""
-           onerror="this.style.display='none'">
+      <img class="plank-img" src="images/plank.png" alt="" onerror="this.style.display='none'">
       <span class="plank-label">Impressum</span>
     </button>
   </div>
-  <!-- Mobile single plank + dropdown -->
   <div style="position:relative;">
     <button class="plank-btn menu-plank" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false" id="menuBtn">
-      <img class="plank-img" src="images/plank.png" alt=""
-           onerror="this.style.display='none'">
+      <img class="plank-img" src="images/plank.png" alt="" onerror="this.style.display='none'">
       <span class="plank-label">☰ Menü</span>
     </button>
     <div class="mobile-menu" id="mobileMenu" role="menu">
@@ -431,20 +173,17 @@
     </div>
   </div>
 </nav>
-<!-- ══════════════ HERO ══════════════ -->
+
 <div id="hero">
   <img src="images/storch.png" alt="Storch">
   <div class="hero-overlay"></div>
-  <h1 class="hero-title">Willkommen in Fürth!</h1>
+  <h1 class="hero-title">Willkommen in meiner Praxis in Fürth!</h1>
 </div>
-<!-- ══════════════ MAIN CONTENT ══════════════ -->
+
 <main>
-  <!-- ── ÜBER MICH ── -->
   <section id="uebermich">
     <div class="section-header">
-      <div class="section-plank" aria-hidden="true">
-        <span class="plank-label">Über mich</span>
-      </div>
+      <h2 class="section-heading">Über mich</h2>
       <div class="section-line"></div>
     </div>
     <div class="profile-wrap">
@@ -452,160 +191,88 @@
         <img src="images/profile.jpg" alt="Ronja Feodarow">
       </div>
       <div class="profile-text section-body">
-        <p>
-          Ronja Feodarow, Psychologin M.Sc. – Praxis für Psychotherapie in Fürth.
-        </p>
-        <p>
-          Kinder und Jugendliche begleite ich im Rahmen einer <strong>Privatpraxis</strong>.
-          Erwachsene nehme ich nach dem <strong>Heilpraktikergesetz (HPG)</strong> an.
-        </p>
-        <div class="qual-list">
-          <span class="qual-chip">M.Sc. Psychologie</span>
-          <span class="qual-chip">Kinder &amp; Jugendliche</span>
-          <span class="qual-chip">Erwachsene (HPG)</span>
-          <span class="qual-chip">Praxis Fürth</span>
-        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
       </div>
     </div>
   </section>
-  <!-- ── ERSTGESPRÄCH ── -->
+
   <section id="erstgespraech">
     <div class="section-header">
-      <div class="section-plank" aria-hidden="true">
-        <span class="plank-label">Erstgespräch</span>
-      </div>
+      <h2 class="section-heading">Erstgespräch</h2>
       <div class="section-line"></div>
     </div>
     <div class="section-body">
-      <p>Das Erstgespräch dient dem gegenseitigen Kennenlernen und dauert ca. 50 Minuten. Für einen Termin erreichen Sie mich per E-Mail oder Telefon.</p>
-    </div>
-    <div class="cards" style="margin-top:28px;">
-      <div class="card">
-        <h3>Dauer</h3>
-        <p>ca. 50 Minuten, in meiner Praxis in Fürth.</p>
-      </div>
-      <div class="card">
-        <h3>Ablauf</h3>
-        <p>Wir besprechen Ihr Anliegen und erste mögliche Therapieziele – ohne Druck.</p>
-      </div>
-      <div class="card">
-        <h3>Vertraulich</h3>
-        <p>Alles unterliegt der Schweigepflicht.</p>
-      </div>
-      <div class="card">
-        <h3>Kosten</h3>
-        <p>Auf Anfrage mitgeteilt.</p>
-      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
     </div>
   </section>
-  <!-- ── KONTAKT ── -->
+
   <section id="kontakt">
     <div class="section-header">
-      <div class="section-plank" aria-hidden="true">
-        <span class="plank-label">Kontakt</span>
-      </div>
+      <h2 class="section-heading">Kontakt</h2>
       <div class="section-line"></div>
     </div>
-    <div class="contact-grid" style="margin-top:24px;">
-      <div class="contact-item">
-        <span class="ci-label">Praxis</span>
-        <span class="ci-value">Musterstraße 1<br>90762 Fürth</span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Telefon</span>
-        <span class="ci-value">
-          <a href="tel:+4991100000">0911 / 000 000</a>
-        </span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">E-Mail</span>
-        <span class="ci-value">
-          <a href="/cdn-cgi/l/email-protection#d1b8bfb7be91b7b4beb5b0a3bea6fca1a2a8b2b9bea5b9b4a3b0a1b8b4ffb5b4"><span class="__cf_email__" data-cfemail="6c05020a032c0a0903080d1e031b411c1f150f04031804091e0d1c0509420809">[email&#160;protected]</span></a>
-        </span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Sprechzeiten</span>
-        <span class="ci-value">Mo – Fr nach Vereinbarung</span>
-      </div>
+    <div class="section-body">
+      <p>Musterstraße 1, 90762 Fürth</p>
+      <p>Telefon: <a href="tel:+4991100000" style="color:var(--bark);">0911 / 000 000</a></p>
+      <p>E-Mail: <a href="mailto:info@example.de" style="color:var(--bark);">info@example.de</a></p>
+      <p>Sprechzeiten: Mo – Fr nach Vereinbarung</p>
     </div>
   </section>
-  <!-- ── IMPRESSUM ── -->
+
   <section id="impressum">
     <div class="section-header">
-      <div class="section-plank" aria-hidden="true">
-        <span class="plank-label">Impressum</span>
-      </div>
+      <h2 class="section-heading">Impressum</h2>
       <div class="section-line"></div>
     </div>
     <div class="section-body">
       <h3>Angaben gemäß § 5 TMG</h3>
-      <p>
-        Ronja Feodarow, M.Sc.<br>
-        Psychologische Psychotherapeutin (in Ausbildung) / Heilpraktikerin Psychotherapie<br>
-        Musterstraße 1<br>
-        90762 Fürth
-      </p>
+      <p>Ronja Feodarow, M.Sc.<br>Psychologische Psychotherapeutin (in Ausbildung) / Heilpraktikerin Psychotherapie<br>Musterstraße 1<br>90762 Fürth</p>
       <h3>Kontakt</h3>
-      <p>
-        Telefon: 0911 / 000 000<br>
-        E-Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82ebece4edc2e4e7ede6e3f0edf5aff2f1fbe1eaedf6eae7f0e3f2ebe7ace6e7">[email&#160;protected]</a>
-      </p>
+      <p>Telefon: 0911 / 000 000<br>E-Mail: info@example.de</p>
       <h3>Berufsbezeichnung &amp; Zulassung</h3>
-      <p>
-        Berufsbezeichnung: Psychologin M.Sc.<br>
-        Tätigkeit mit Kindern und Jugendlichen: Privatpraxis<br>
-        Tätigkeit mit Erwachsenen: nach dem Heilpraktikergesetz (HPG)
-      </p>
+      <p>Berufsbezeichnung: Psychologin M.Sc.<br>Tätigkeit mit Kindern und Jugendlichen: Privatpraxis<br>Tätigkeit mit Erwachsenen: nach dem Heilpraktikergesetz (HPG)</p>
       <h3>Haftungsausschluss</h3>
-      <p>
-        Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt.
-        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann
-        jedoch keine Gewähr übernommen werden. Diese Website enthält keine
-        medizinische Diagnose oder Therapieempfehlung.
-      </p>
+      <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Diese Website enthält keine medizinische Diagnose oder Therapieempfehlung.</p>
       <h3>Datenschutz</h3>
-      <p>
-        Die Nutzung dieser Website ist ohne Angabe personenbezogener Daten
-        möglich. Soweit Daten erhoben werden, erfolgt dies auf freiwilliger
-        Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht
-        an Dritte weitergegeben..
-      </p>
+      <p>Die Nutzung dieser Website ist ohne Angabe personenbezogener Daten möglich. Soweit Daten erhoben werden, erfolgt dies auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
     </div>
   </section>
 </main>
+
 <footer>
   &copy; <span id="year"></span> Ronja Feodarow, M.Sc. &nbsp;·&nbsp; Psychotherapeutin in Fürth
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── Set current year ──
-  document.getElementById('year').textContent = new Date().getFullYear();
-  // ── Smooth scroll helper (accounts for fixed nav height) ──
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
-    const navH = document.getElementById('navbar').offsetHeight;
-    const top  = el.getBoundingClientRect().top + window.scrollY - navH - 16;
-    window.scrollTo({ top, behavior: 'smooth' });
+    const navH = document.getElementById("navbar").offsetHeight;
+    const top = el.getBoundingClientRect().top + window.scrollY - navH - 16;
+    window.scrollTo({ top, behavior: "smooth" });
   }
-  // ── Mobile menu toggle ──
   function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('menuBtn');
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
+    const menu = document.getElementById("mobileMenu");
+    const btn = document.getElementById("menuBtn");
+    const open = menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
   }
   function mobileNav(id) {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('menuBtn').setAttribute('aria-expanded', 'false');
+    document.getElementById("mobileMenu").classList.remove("open");
+    document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
     scrollToSection(id);
   }
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('menuBtn');
+  document.addEventListener("click", function(e) {
+    const menu = document.getElementById("mobileMenu");
+    const btn = document.getElementById("menuBtn");
     if (!menu.contains(e.target) && !btn.contains(e.target)) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
     }
   });
 </script>
