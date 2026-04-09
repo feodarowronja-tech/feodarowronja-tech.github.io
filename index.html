@@ -34,6 +34,8 @@
       line-height: 1.7;
     }
 
+    
+
     /* ── Navbar ── */
     #navbar {
       position: fixed; top: 0; left: 0; right: 0;
@@ -209,8 +211,8 @@
     a { color: #bb402a; }
 
     .cv-table { margin-top: 1em; border-collapse: collapse; width: 100%; }
-    .cv-table td { padding: 5px 0; vertical-align: top; font-size: 1rem; line-height: 1.6; }
-    .cv-year { white-space: nowrap; padding-right: 24px; color: #555; font-size: 0.95rem; }
+    .cv-table td { padding: 5px 5; vertical-align: top; font-size: 1rem; line-height: 1.6; }
+    .cv-year { white-space: nowrap; padding-right: 24px; color: #000000; font-size: 0.95rem; }
 
     @media (max-width: 720px) {
       #navbar { height: 62px; padding: 0 16px 0 28px; }
@@ -363,9 +365,11 @@
       <p>Sprechstunden und Termine nach Vereinbarung telefonisch oder per E-Mail.</p>
       <p>Telefon: <a href="tel:+4915566205656">0155 6620 5656</a></p>
       <p><strong>Telefonzeiten:</strong><br>
-      Montag &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10:00 – 12:00 &nbsp;&amp;&nbsp; 18:00 – 19:00<br>
-      Donnerstag &nbsp;10:00 – 12:00</p>
-      <p>E-Mail: <a href="mailto:info@pt-feodarow.de">info@pt-feodarow.de</a></p>
+      <table class="cv-table">
+      <tr><td class="cv-year">Montag:</td><td>10:00 – 12:00<br>18:00 – 19:00</td></tr>
+      <tr><td class="cv-year">Donnerstag:</td><td>10:00 – 12:00</td></tr>
+    </table>
+      <p>E-Mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#112;&#116;&#45;&#102;&#101;&#111;&#100;&#97;&#114;&#111;&#119;&#46;&#100;&#101;">info@pt-feodarow.de</a></p>
     </div>
   </section>
 
@@ -566,7 +570,7 @@ gesetzliche Aufbewahrungsfristen &ndash; bleiben unber&uuml;hrt.</p>
 </main>
 
 <footer>
-  &copy; <span id="yr"></span> Ronja Feodarow, M.Sc. &nbsp;·&nbsp; Psychotherapeutin in Fürth
+  &copy; <span id="yr"></span> Ronja Feodarow, M.Sc.<br>Diese Website nutzt keine Cookies und bedarf daher keines Cookiebanners.
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
